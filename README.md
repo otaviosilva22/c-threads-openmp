@@ -29,17 +29,22 @@ A quantidade de threads é definida a partir do número de núcleos disponíveis
   #include <unistd.h>
 #endif
 
-#ifdef _WIN32 
-  #ifndef _SC_NPROCESSORS_ONLN
-    SYSTEM_INFO info;
-    GetSystemInfo(&info);
-    #define sysconf(a) info.dwNumberOfProcessors
-    #define _SC_NPROCESSORS_ONLN
+int main(){
+  #ifdef _WIN32 
+    #ifndef _SC_NPROCESSORS_ONLN
+      SYSTEM_INFO info;
+      GetSystemInfo(&info);
+      #define sysconf(a) info.dwNumberOfProcessors
+      #define _SC_NPROCESSORS_ONLN
+    #endif
   #endif
-#endif
 
-//numero de nucleos disponíveis
-long nprocs = sysconf(_SC_NPROCESSORS_ONLN); 
+  //numero de nucleos disponíveis
+  long nprocs = sysconf(_SC_NPROCESSORS_ONLN);
+  
+  return 0;
+}
+ 
 ```
 
 <h2> Execução de Threads </h2>
