@@ -49,10 +49,10 @@ int main(){
 
 <h2> Execução de Threads </h2>
 
-A declaração de uma thread com OpenMP é relacionada à seguinte regra com parâmetro definido pelo número de threads:
+A declaração de uma thread com OpenMP é relacionada à seguinte regra:
 
 ```
-#pragma omp parallel num_threads(nprocs-1)
+#pragma omp parallel num_threads(nthreads)
 {
   //executados por cada thread
 }
