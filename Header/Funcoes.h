@@ -1,9 +1,9 @@
-/* --- Funções ---*/
+/* --- FunÃ§Ãµes ---*/
 
 //define quantidade de nucleos
 void DefineNucleos(){
 	
-	//configuração para informações do sistema
+	//configuraÃ§Ã£o para informaÃ§Ãµes do sistema
 	#ifdef _WIN32 
 		#ifndef _SC_NPROCESSORS_ONLN
 			SYSTEM_INFO info;
@@ -13,7 +13,7 @@ void DefineNucleos(){
 		#endif
 	#endif
 	
-	//numero de nucleos disponíveis
+	//numero de nucleos disponÃ­veis
 	nprocs = sysconf(_SC_NPROCESSORS_ONLN); 
 	
 }	
@@ -28,7 +28,7 @@ void IniciaFila(struct Fila *fila){
 //enfileira
 void Enfileira(struct Fila *fila){
 	
-	//variável que representa uma linha
+	//variÃ¡vel que representa uma linha
 	struct Linha l;
 	
 	//Leitura do arquivo
@@ -38,7 +38,7 @@ void Enfileira(struct Fila *fila){
 	//abrindo o arquivo_frase em modo "somente leitura"
 	pont_arq = fopen("./Arquivo/arquivo.txt", "r");
 	
-	//enquanto não for fim de arquivo o looping será executado e será impresso o texto
+	//enquanto nÃ£o for fim de arquivo o looping serÃ¡ executado e serÃ¡ impresso o texto
 	while(fgets(texto_str, tamLinha, pont_arq) != NULL){
 		
 		//adiciona valores a struct linha
@@ -56,24 +56,24 @@ void Enfileira(struct Fila *fila){
 //desenfileira uma posicao da fila
 int Desenfileira(struct Fila *fila){
 		
-	//variaveis de interação
+	//variaveis de interaÃ§Ã£o
 	int i=0, j=0, k=0;
 	
 	//string que representa uma linha
 	char l[tamLinha] = "";
 	
-	//zona crítica executada pelas threads uma por vez
+	//zona crÃ­tica executada pelas threads uma por vez
 	#pragma omp critical 
 	{
 		//se ainda existir elementos na fila
 		if (fila->frente < fila->tras){
 			
-			//transforma linha em maiúsculas
+			//transforma linha em maiÃºsculas
 			for (i=0;i<strlen(fila->linha[fila->frente].conteudo);i++){
 				l[i] = toupper (fila->linha[fila->frente].conteudo[i]);	
 			}
 		
-			//executa função de contagem de ocorrencias
+			//executa funÃ§Ã£o de contagem de ocorrencias
 		    Substring_count(l, palavra);
 		}
 		
@@ -81,7 +81,7 @@ int Desenfileira(struct Fila *fila){
 		fila->frente += 1;
 	}
 	
-	//verifica se já não percorreu toda a fila
+	//verifica se jÃ¡ nÃ£o percorreu toda a fila
 	if (fila->frente > fila->tras){
 		return 0;
 	}
@@ -89,7 +89,7 @@ int Desenfileira(struct Fila *fila){
 	return 1;
 }
 
-//função que faz a contagem de ocorrencias de substring em string
+//funÃ§Ã£o que faz a contagem de ocorrencias de substring em string
 void Substring_count(char* string, char* substring) {
 	int i, j, l1, l2;
 	int found = 0;
@@ -108,14 +108,33 @@ void Substring_count(char* string, char* substring) {
 		}
 		
 		if(found == 1) {
-	 		contador++;
-  			i = i + l2 -1;
+			if (i == 0 && i != (l1-l2)){
+				if (string[i+l2] == ' '){
+					contador++;
+	  				i = i + l2 -1;	
+				}		
+			}
+	 		else if (string[i-1] == ' ' && string[i+l2] == ' '){
+				contador++;
+	  			i = i + l2 -1;	
+					
+			}
+			else if (i == (l1-l2-1)){
+				if (string[i-1] == ' '){
+					contador++;
+	  				i = i + l2 -1;	
+				}
+			}
+			else if (i == 0 && i == (l1-l2)){
+				contador++;
+				i = i + l2 - 1;
+			}
 	   	}			
 	}
 	
 }
 
-//Função teste para exibir a fila
+//FunÃ§Ã£o teste para exibir a fila
 void ExibeFila(struct Fila *fila){
 	int i;
 	for (i=fila->frente;i<fila->tras;i++){
@@ -132,7 +151,7 @@ void TransformaPalavra(char palavraPesquisada[]){
 	
 	int i; 
 	
-	//converte palavra para maiúscula
+	//converte palavra para maiÃºscula
 	for (i=0;i<strlen(palavra);i++){
 		palavra[i] = toupper(palavra[i]);
 	}
@@ -143,12 +162,10 @@ void TransformaPalavra(char palavraPesquisada[]){
 void ExibeOcorrencia(){
 	
 	printf ("----------- INFORMACOES DO SISTEMA -------------\n\n");
-	printf ("       %d nucleos do processador em uso\n\n\n", nprocs);
+	printf ("       %d NUCLEOS DO PROCESSADOR EM USO\n\n\n", nprocs);
 	
 	printf ("----------------- OCORRENCIAS ------------------\n\n");
-	printf ("  %d ocorrencia(s) da palavra %s no texto\n", contador, palavra);
+	printf (" %d OCORRENCIA(S) DA PALAVRA '%s' NO TEXTO\n", contador, palavra);
 	
 	
 }
-
-
