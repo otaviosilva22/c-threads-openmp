@@ -109,12 +109,12 @@ void Substring_count(char* string, char* substring) {
 		
 		if(found == 1) {
 			if (i == 0 && i != (l1-l2)){
-				if (string[i+l2] == ' ' || string[i+l2] == '?'|| string[i+l2] == '!' || string[i+l2] == '.'){
+				if (string[i+l2] == ' ' || string[i+l2] == '?'|| string[i+l2] == '!' || string[i+l2] == '.' || string[i+l2] == ','){
 					contador++;
 	  				i = i + l2 -1;	
 				}		
 			}
-	 		else if (string[i-1] == ' ' && (string[i+l2] == ' ' || string[i+l2] == '?'|| string[i+l2] == '!' || string[i+l2] == '.')){
+	 		else if (string[i-1] == ' ' && (string[i+l2] == ' ' || string[i+l2] == '?'|| string[i+l2] == '!' || string[i+l2] == '.' || string[i+l2] == ',')){
 				contador++;
 	  			i = i + l2 -1;	
 					
