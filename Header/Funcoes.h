@@ -47,10 +47,7 @@ void Enfileira(struct Fila *fila){
 			//enfileira linha
 			strcpy(fila->linha[fila->tras].conteudo, l.conteudo);
 			fila->tras=fila->tras+1;	
-		
 	}
-	
-		
 }
 
 //desenfileira uma posicao da fila
@@ -76,6 +73,9 @@ int Desenfileira(struct Fila *fila){
 			//executa função de contagem de ocorrencias
 		    Substring_count(l, palavra);
 		}
+		
+		//retira linha
+		strcpy(fila->linha[fila->frente].conteudo, " ");
 		
 	    //desenfileira uma posicao
 		fila->frente += 1;
@@ -109,12 +109,12 @@ void Substring_count(char* string, char* substring) {
 		
 		if(found == 1) {
 			if (i == 0 && i != (l1-l2)){
-				if (string[i+l2] == ' '){
+				if (string[i+l2] == ' ' || string[i+l2] == '?'|| string[i+l2] == '!' || string[i+l2] == '.'){
 					contador++;
 	  				i = i + l2 -1;	
 				}		
 			}
-	 		else if (string[i-1] == ' ' && string[i+l2] == ' '){
+	 		else if (string[i-1] == ' ' && (string[i+l2] == ' ' || string[i+l2] == '?'|| string[i+l2] == '!' || string[i+l2] == '.')){
 				contador++;
 	  			i = i + l2 -1;	
 					
@@ -128,6 +128,12 @@ void Substring_count(char* string, char* substring) {
 			else if (i == 0 && i == (l1-l2)){
 				contador++;
 				i = i + l2 - 1;
+			}
+			else if ( i == l1-l2){
+				if (string[i-1] == ' '){
+					contador++;
+					i = i+l2-1;
+				}
 			}
 	   	}			
 	}
@@ -145,7 +151,6 @@ void ExibeFila(struct Fila *fila){
 
 //transforma palavra pesquisada em uppercase
 void TransformaPalavra(char palavraPesquisada[]){
-	
 	//strcpy de palavra pesquisada
 	strcpy(palavra, palavraPesquisada);
 	
@@ -155,7 +160,6 @@ void TransformaPalavra(char palavraPesquisada[]){
 	for (i=0;i<strlen(palavra);i++){
 		palavra[i] = toupper(palavra[i]);
 	}
-		
 }
 
 //exibe ocorrencias de palavra no texto
@@ -166,6 +170,5 @@ void ExibeOcorrencia(){
 	
 	printf ("----------------- OCORRENCIAS ------------------\n\n");
 	printf (" %d OCORRENCIA(S) DA PALAVRA '%s' NO TEXTO\n", contador, palavra);
-	
-	
 }
+
