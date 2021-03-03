@@ -1,8 +1,8 @@
 # Uso de threads em C com interface OpenMP
 
-Este repositório faz referência ao uso de threads em linguagem C com interface OpenMP para manipulãção de arquivo de texto.
+Este repositório faz referência ao uso de threads em linguagem C por meio  da API OpenMP.
 
-Nesse contexto, a tarefa em questão é utilizar threads para percorrer uma fila estática que contém as linhas do arquivo e identificar o número de ocorrência de determinada palavra.
+Nesse contexto, a tarefa em questão é utilizar threads para percorrer uma fila estática que contém linhas de um arquivo de texto, e identificar o número de ocorrências de determinada palavra.
 
 <h2> Tecnologias Utilizadas </h2>
 
