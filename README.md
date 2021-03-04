@@ -4,12 +4,12 @@ Este repositório faz referência ao uso de threads em linguagem C por meio  da 
 
 Nesse contexto, a tarefa em questão é utilizar threads para percorrer uma fila estática que contém linhas de um arquivo de texto, e identificar o número de ocorrências de determinada palavra.
 
-<h2> Tecnologias Utilizadas </h2>
+<h2> Tecnologias utilizadas </h2>
 
 - [Linguagem C](https://docs.microsoft.com/pt-br/cpp/c-language/?view=msvc-160)
 - [OpenMP](https://www.openmp.org/#)
 
-<h2> Configuração do Ambiente</h2>
+<h2> Configuração do ambiente</h2>
 
 É necessário antes adicionar o seguinte comando ao compilador, referente ao OpenMP:
 
@@ -17,7 +17,7 @@ Nesse contexto, a tarefa em questão é utilizar threads para percorrer uma fila
 -fopenmp
 ```
 
-<h2> Número de Núcleos </h2>
+<h2> Número de núcleos </h2>
 
 A quantidade de threads é definida a partir do número de núcleos disponíveis do processador.
 
@@ -47,7 +47,7 @@ int main(){
  
 ```
 
-<h2> Execução de Threads </h2>
+<h2> Execução de threads </h2>
 
 A declaração de uma thread com OpenMP é relacionada à seguinte regra:
 
@@ -58,7 +58,7 @@ A declaração de uma thread com OpenMP é relacionada à seguinte regra:
 }
 ```
 
-<h2> Zona Crítica </h2>
+<h2> Zona crítica </h2>
 
 A zona crítica serve para definir que as threads serão executadas uma por vez.
 
