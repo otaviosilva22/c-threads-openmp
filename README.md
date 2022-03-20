@@ -13,15 +13,15 @@ Nesse contexto, a tarefa em questão é utilizar threads para percorrer uma fila
 
 É necessário antes adicionar o seguinte comando ao compilador, referente ao OpenMP:
 
-```
+~~~ c
 -fopenmp
-```
+~~~
 
 ## Número de núcleos
 
 A quantidade de threads é definida a partir do número de núcleos disponíveis do processador.
 
-```
+~~~ c
 #ifdef _WIN32
   #define WIN32_LEAN_AND_MEAN
   #include <windows.h>
@@ -45,24 +45,24 @@ int main(){
   return 0;
 }
  
-```
+~~~
 
 ## Execução de threads
 
 A declaração de uma thread com OpenMP é relacionada à seguinte regra:
 
-```
+~~~ c
 #pragma omp parallel num_threads(nthreads)
 {
   //executados por cada thread
 }
-```
+~~~
 
 ## Zona crítica
 
 A zona crítica serve para definir que as threads serão executadas uma por vez.
 
-```
+~~~ c
 #pragma omp parallel num_threads(nprocs-1)
 {
   #pragma omp critical
@@ -70,7 +70,7 @@ A zona crítica serve para definir que as threads serão executadas uma por vez.
     //executados por cada thread
   }
 }
-```
+~~~
 
 ## Autor
 <b>Otávio Augusto Souza Silva</b>
