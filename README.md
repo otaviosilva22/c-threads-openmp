@@ -4,12 +4,12 @@ Este repositório faz referência ao uso de threads em linguagem C por meio  da 
 
 Nesse contexto, a tarefa em questão é utilizar threads para percorrer uma fila estática que contém linhas de um arquivo de texto, e identificar o número de ocorrências de determinada palavra.
 
-<h2> Tecnologias utilizadas </h2>
+## Tecnologias utilizadas
 
 - [Linguagem C](https://docs.microsoft.com/pt-br/cpp/c-language/?view=msvc-160)
 - [OpenMP](https://www.openmp.org/#)
 
-<h2> Configuração do ambiente</h2>
+## Configuração do ambiente
 
 É necessário antes adicionar o seguinte comando ao compilador, referente ao OpenMP:
 
@@ -17,7 +17,7 @@ Nesse contexto, a tarefa em questão é utilizar threads para percorrer uma fila
 -fopenmp
 ```
 
-<h2> Número de núcleos </h2>
+## Número de núcleos
 
 A quantidade de threads é definida a partir do número de núcleos disponíveis do processador.
 
@@ -47,7 +47,7 @@ int main(){
  
 ```
 
-<h2> Execução de threads </h2>
+## Execução de threads
 
 A declaração de uma thread com OpenMP é relacionada à seguinte regra:
 
@@ -58,7 +58,7 @@ A declaração de uma thread com OpenMP é relacionada à seguinte regra:
 }
 ```
 
-<h2> Zona crítica </h2>
+## Zona crítica
 
 A zona crítica serve para definir que as threads serão executadas uma por vez.
 
@@ -72,7 +72,8 @@ A zona crítica serve para definir que as threads serão executadas uma por vez.
 }
 ```
 
-<h2> Contato </h2>
+## Autor
+<b>Otávio Augusto Souza Silva</b>
 
 [![Linkedin Badge](https://img.shields.io/badge/-Otávio-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/otaviosilva22/)](https://www.linkedin.com/in/otaviosilva22/)
 [![Gmail Badge](https://img.shields.io/badge/-otavio.ssilva22@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:otavio.ssilva22@gmail.com)](mailto:otavio.ssilva22@gmail.com)
